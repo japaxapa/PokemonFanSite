@@ -12,7 +12,7 @@ export default function NavBar() {
   const [activePage, setActivePage] = useState("home");
 
   return (
-    <div className="flex w-screen justify-between">
+    <div className="flex grow justify-between">
       {/* TODO logo */}
       <div
         id="logo"

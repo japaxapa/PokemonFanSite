@@ -9,7 +9,7 @@ import {
 const fetchPokemon = async (resource: NamedAPIResource): Promise<Pokemon> => {
   const response = await fetch(`${resource.url}`);
   const data = await response.json();
-  
+
   return data;
 };
 
@@ -24,11 +24,13 @@ const fetchPokemonsResources = async (
   return data.results;
 };
 
-const usePokemon = (limit: number, offset: number) => {
-  return useSuspenseQuery({
-    queryKey: ["pokemon", limit, offset],
-    queryFn: () => fetchPokemonsResources(limit, offset),
+const useResources = () => {
+  const resources = useSuspenseQuery({
+    queryKey: ["resources"],
+    queryFn: () => fetchPokemonsResources(1328, 0),
   });
+
+  return resources;
 };
 
 const usePokemons = (limit: number, offset: number) => {
@@ -51,7 +53,7 @@ const usePokemons = (limit: number, offset: number) => {
   });
 };
 
-export { usePokemon, usePokemons, fetchPokemonsResources };
+export { usePokemons, useResources, fetchPokemonsResources };
 
 export const pokemonOptions = queryOptions({
   queryKey: ["pokemon-options"],

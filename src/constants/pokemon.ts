@@ -144,24 +144,54 @@ export const TYPES = {
 } as const;
 
 export const TYPES_COLORS = {
-  NORMAL: { style: "bg-gradient-to-br from-neutral-50 to-neutral-400 text-zinc-800" },
-  FIGHTING: { style: "bg-gradient-to-br from-amber-600 to-amber-900 text-zinc-200" },
+  NORMAL: {
+    style: "bg-gradient-to-br from-neutral-50 to-neutral-400 text-zinc-800",
+  },
+  FIGHTING: {
+    style: "bg-gradient-to-br from-amber-600 to-amber-900 text-zinc-200",
+  },
   FLYING: { style: "bg-gradient-to-br from-sky-50 to-sky-300 text-zinc-800" },
-  POISON: { style: "bg-gradient-to-br from-fuchsia-400 to-fuchsia-800 text-zinc-800" },
-  GROUND: { style: "bg-gradient-to-br from-orange-800 to-orange-950 text-zinc-200" },
-  ROCK: { style: "bg-gradient-to-br from-stone-500 to-stone-800 text-zinc-200" },
-  BUG: { style: "bg-gradient-to-br from-emerald-300 to-emerald-600 text-zinc-800" },
-  GHOST: { style: "bg-gradient-to-br from-violet-700 to-violet-900 text-zinc-200" },
+  POISON: {
+    style: "bg-gradient-to-br from-fuchsia-400 to-fuchsia-800 text-zinc-800",
+  },
+  GROUND: {
+    style: "bg-gradient-to-br from-orange-800 to-orange-950 text-zinc-200",
+  },
+  ROCK: {
+    style: "bg-gradient-to-br from-stone-500 to-stone-800 text-zinc-200",
+  },
+  BUG: {
+    style: "bg-gradient-to-br from-emerald-300 to-emerald-600 text-zinc-800",
+  },
+  GHOST: {
+    style: "bg-gradient-to-br from-violet-700 to-violet-900 text-zinc-200",
+  },
   STEEL: { style: "bg-gradient-to-br from-zinc-50 to-zinc-300 text-zinc-800" },
   FIRE: { style: "bg-gradient-to-br from-red-400 to-red-700 text-zinc-200" },
   WATER: { style: "bg-gradient-to-br from-blue-200 to-blue-500 text-zinc-800" },
-  GRASS: { style: "bg-gradient-to-br from-green-400 to-green-800 text-zinc-200" },
-  ELECTRIC: { style: "bg-gradient-to-br from-yellow-200 to-yellow-400 text-zinc-800" },
-  PSYCHIC: { style: "bg-gradient-to-br from-purple-300 to-purple-500 text-zinc-800" },
+  GRASS: {
+    style: "bg-gradient-to-br from-green-400 to-green-800 text-zinc-200",
+  },
+  ELECTRIC: {
+    style: "bg-gradient-to-br from-yellow-200 to-yellow-400 text-zinc-800",
+  },
+  PSYCHIC: {
+    style: "bg-gradient-to-br from-purple-300 to-purple-500 text-zinc-800",
+  },
   ICE: { style: "bg-gradient-to-br from-cyan-100 to-cyan-300 text-zinc-800" },
-  DRAGON: { style: "bg-gradient-to-br from-indigo-300 to-indigo-600 text-zinc-800" },
+  DRAGON: {
+    style: "bg-gradient-to-br from-indigo-300 to-indigo-600 text-zinc-800",
+  },
   DARK: { style: "bg-gradient-to-br from-gray-600 to-gray-950 text-zinc-200" },
   FAIRY: { style: "bg-gradient-to-br from-rose-100 to-rose-400 text-zinc-800" },
-  UNKNOWN: { style: "bg-gradient-to-br from-slate-300 to-slate-600 text-zinc-800" },
-  SHADOW: { style: "bg-gradient-to-br from-neutral-300 to-neutral-600 text-zinc-800" },
+  UNKNOWN: {
+    style: "bg-gradient-to-br from-slate-300 to-slate-600 text-zinc-800",
+  },
+  SHADOW: {
+    style: "bg-gradient-to-br from-neutral-300 to-neutral-600 text-zinc-800",
+  },
 } as const;
+
+export const GENERATION_QUANTITIES = [
+  0, 151, 251, 386, 493, 649, 721, 809, 905, 1025, 1328,
+] as const;

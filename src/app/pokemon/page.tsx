@@ -1,4 +1,5 @@
 import { PokemonInfo } from "@/components/PokemonInfo";
+import PokemonList from "@/components/PokemonList";
 import { pokemonOptions } from "@/queries/usePokemon";
 import {
   dehydrate,
@@ -14,7 +15,8 @@ export default async function PokemonPage() {
   return (
     <div>
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <PokemonInfo />
+        {/* <PokemonInfo /> */}
+        <PokemonList />
       </HydrationBoundary>
     </div>
   );

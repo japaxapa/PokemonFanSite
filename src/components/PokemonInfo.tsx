@@ -23,7 +23,7 @@ export function PokemonInfo() {
   const { data, pending } = usePokemons(limit, offset);
 
   return (
-    <Card className="gap-2">
+    <Card className="gap-2 px-4">
       <Card className="flex flex-row px-4 justify-between">
         <Input placeholder="Search pokemon by NAME or ID"></Input>
         <div className="grid w-1/4 max-w-sm items-center gap-3">

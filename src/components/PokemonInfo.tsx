@@ -18,7 +18,7 @@ import { Button } from "./ui/button";
 import { ButtonGroup } from "./ui/button-group";
 
 export function PokemonInfo() {
-  const [limit, setLimit] = useState(25);
+  const [limit, setLimit] = useState(50);
   const [offset, setOffset] = useState(0);
   const { data, pending } = usePokemons(limit, offset);
 

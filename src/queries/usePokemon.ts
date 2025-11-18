@@ -6,7 +6,14 @@ import {
   useSuspenseQuery,
 } from "@tanstack/react-query";
 
-const fetchPokemon = async (resource: NamedAPIResource): Promise<Pokemon> => {
+// returns the segment (string) or null if none
+function getIdFromUrl(url: string): string | null {
+  const trimmed = url.replace(/\/$/, ""); // remove trailing slash if present
+  const parts = trimmed.split("/");
+  return parts.length ? parts[parts.length - 1] : null;
+}
+
+const fetchPokemonByResource = async (resource: NamedAPIResource): Promise<Pokemon> => {
   const response = await fetch(`${resource.url}`);
   const data = await response.json();
 
@@ -33,6 +40,14 @@ const useResources = () => {
   return resources;
 };
 
+const usePokemon = (resource: NamedAPIResource) => {
+  const id = getIdFromUrl(resource.url);
+  return useSuspenseQuery({
+    queryKey: ["pokemon", id],
+    queryFn: async () => fetchPokemonByResource(resource),
+  });
+};
+
 const usePokemons = (limit: number, offset: number) => {
   const pokemons = useSuspenseQuery({
     queryKey: ["pokemons", limit, offset],
@@ -41,8 +56,8 @@ const usePokemons = (limit: number, offset: number) => {
 
   return useSuspenseQueries({
     queries: pokemons.data.map((pokemon) => ({
-      queryKey: ["pokemon", pokemon.name],
-      queryFn: () => fetchPokemon(pokemon),
+      queryKey: ["pokemon", getIdFromUrl(pokemon.url)],
+      queryFn: () => fetchPokemonByResource(pokemon),
     })),
     combine: (results) => {
       return {
@@ -53,7 +68,7 @@ const usePokemons = (limit: number, offset: number) => {
   });
 };
 
-export { usePokemons, useResources, fetchPokemonsResources };
+export { usePokemon, usePokemons, useResources };
 
 export const pokemonOptions = queryOptions({
   queryKey: ["pokemon-options"],

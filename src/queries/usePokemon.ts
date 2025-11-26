@@ -13,11 +13,19 @@ function getIdFromUrl(url: string): string | null {
   return parts.length ? parts[parts.length - 1] : null;
 }
 
-const fetchPokemonByResource = async (resource: NamedAPIResource): Promise<Pokemon> => {
+const fetchPokemonByResource = async (
+  resource: NamedAPIResource
+): Promise<Pokemon> => {
   const response = await fetch(`${resource.url}`);
   const data = await response.json();
 
   return data;
+};
+
+const fetchPokemonsResource = async (id: string): Promise<NamedAPIResource> => {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+  const data = await response.json();
+  return data.results;
 };
 
 const fetchPokemonsResources = async (
@@ -40,12 +48,21 @@ const useResources = () => {
   return resources;
 };
 
-const usePokemon = (resource: NamedAPIResource) => {
-  const id = getIdFromUrl(resource.url);
-  return useSuspenseQuery({
-    queryKey: ["pokemon", id],
-    queryFn: async () => fetchPokemonByResource(resource),
-  });
+const usePokemonDetail = (info: NamedAPIResource | Pokemon) => {
+  let pokemon: Pokemon;
+
+  if ("url" in info) {
+    const id = getIdFromUrl(info.url);
+    const result = useSuspenseQuery({
+      queryKey: ["pokemon", id],
+      queryFn: async () => fetchPokemonByResource(info),
+    });
+    pokemon = result.data;
+  } else {
+    pokemon = info;
+  }
+
+  return { pokemon };
 };
 
 const usePokemons = (limit: number, offset: number) => {
@@ -68,7 +85,7 @@ const usePokemons = (limit: number, offset: number) => {
   });
 };
 
-export { usePokemon, usePokemons, useResources };
+export { usePokemonDetail, usePokemons, useResources };
 
 export const pokemonOptions = queryOptions({
   queryKey: ["pokemon-options"],

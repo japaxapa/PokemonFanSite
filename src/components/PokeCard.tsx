@@ -21,7 +21,7 @@ export default function PokeCard({ pokemon }: IPokeCard) {
             </h3>
           </Card>
           <div className="flex justify-center items-center rounded-full w-15 h-15 bg-linear-to-t from-zinc-50 from-35% to-red-500 p-1 border-2 border-zinc-950">
-            <h4 className="font-bold text-center">{`#${pokemon.id}`}</h4>
+            <h4 className="font-bold text-center text-gray-950">{`#${pokemon.id}`}</h4>
           </div>
         </div>
 

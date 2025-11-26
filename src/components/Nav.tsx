@@ -6,6 +6,7 @@ import { User } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { ModeToggle } from "./ThemeButton";
 // import Image from "next/image";
 
 export default function NavBar() {
@@ -27,7 +28,6 @@ export default function NavBar() {
         <div className="h-20 w-40 bg-red-500"></div>
       </div>
       {/* TODO links design */}
-      {/* TODO links navigation */}
       <div
         id="links__container"
         className="w-3/4 flex flex-col"
@@ -56,7 +56,9 @@ export default function NavBar() {
         className="w-1/12 flex justify-center items-center"
       >
         {/* TODO authentication */}
-        <div className="hover:cursor-pointer">
+        <div className="hover:cursor-pointer flex flex-row gap-8 p-6">
+          <ModeToggle />
+
           <Avatar>
             {/* TODO dinamic picture */}
             <AvatarImage

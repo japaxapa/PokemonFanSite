@@ -1,5 +1,7 @@
 "use client";
 
+// TODO repair changing number of items per page page change bug
+
 import { usePokemons } from "@/queries/usePokemon";
 import PokeCard from "./PokeCard";
 import { JSX, useCallback, useState } from "react";
@@ -85,6 +87,7 @@ function ChangePage(
       <Button
         disabled={offset == 0}
         onClick={() => setOffset((prev) => prev - limit)}
+        className={`${offset == 0 ? "cursor-pointer" : ""}`}
       >
         Prev
       </Button>
@@ -136,27 +139,10 @@ function ChangePage(
       <Button
         disabled={offset >= 1328 - limit}
         onClick={() => setOffset((prev) => prev + limit)}
+        className={`${offset >= 1328 - limit ? "" : "cursor-pointer"}`}
       >
         Next
       </Button>
     </div>
   );
 }
-// 'use client'
-
-// import React from 'react'
-// import { useSuspenseQuery } from '@tanstack/react-query'
-// import { pokemonOptions } from '@/app/pokemon'
-
-// export function PokemonInfo() {
-//   const { data } = useSuspenseQuery(pokemonOptions)
-
-//   return (
-//     <div>
-//       <figure>
-//         <img src={data.sprites.front_shiny} height={200} alt={data.name} />
-//         <h2>I'm {data.name}</h2>
-//       </figure>
-//     </div>
-//   )
-// }

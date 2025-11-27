@@ -1,7 +1,5 @@
 "use client";
 
-// TODO repair changing number of items per page page change bug
-
 import { usePokemons } from "@/queries/usePokemon";
 import PokeCard from "./PokeCard";
 import { JSX, useCallback, useState } from "react";
@@ -24,12 +22,26 @@ export function PokemonInfo() {
   const [offset, setOffset] = useState(0);
   const { data, pending } = usePokemons(limit, offset);
 
+  const handleValueChange = useCallback(
+    (value: string) => {
+      const currPage = offset / limit + 1;
+      const number = parseInt(value);
+      setLimit(number);
+      setOffset(
+        Math.floor((currPage - 1) * number) > 1
+          ? Math.floor((currPage - 1) * number)
+          : 0
+      );
+    },
+    [offset, limit]
+  );
+
   return (
     <Card className="gap-2 px-4">
       <Card className="flex flex-row px-4 justify-between">
         <Input placeholder="Search pokemon by NAME or ID"></Input>
         <div className="grid w-1/4 max-w-sm items-center gap-3">
-          <Select onValueChange={(value) => setLimit(parseInt(value))}>
+          <Select onValueChange={(value) => handleValueChange(value)}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="# of items per page" />
             </SelectTrigger>
@@ -75,11 +87,19 @@ function ChangePage(
 
   const handleClick = useCallback(
     (value: number) => () => {
-      if (value != currPage) {
+      if (offset % limit == 0) {
         setOffset((prev) => prev + value * limit);
+      } else {
+        const currPage = Math.trunc(offset / limit);
+
+        if (value - currPage > 0) {
+          setOffset((prev) => prev * currPage + value * limit);
+        } else {
+          setOffset((prev) => 0);
+        }
       }
     },
-    [setOffset]
+    [setOffset, limit, offset]
   );
 
   return (
@@ -113,7 +133,6 @@ function ChangePage(
           <Button
             className="hover:cursor-pointer"
             variant={"ghost"}
-            onClick={handleClick(currPage)}
           >
             {currPage}
           </Button>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import PokeDetail from "@/components/PokeDetails";
+import PokeDetail from "@/components/pokepage/PokeDetails";
 import { Card } from "@/components/ui/card";
 import { useParams } from "next/navigation";
 

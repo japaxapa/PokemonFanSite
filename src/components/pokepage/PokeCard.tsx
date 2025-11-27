@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Card } from "./ui/card";
+import { Card } from "../ui/card";
 import { Pokemon } from "@/models/Pokemon";
 import TypeTag from "./TypeTag";
 import Link from "next/link";

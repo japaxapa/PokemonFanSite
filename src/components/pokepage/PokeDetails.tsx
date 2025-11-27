@@ -1,9 +1,9 @@
 import { NamedAPIResource } from "@/models/Common";
 import { Pokemon } from "@/models/Pokemon";
 import { usePokemonDetail } from "@/queries/usePokemon";
-import { Card } from "./ui/card";
+import { Card } from "../ui/card";
 import Image from "next/image";
-import { Separator } from "./ui/separator";
+import { Separator } from "../ui/separator";
 
 interface IPokeDetailProps {
   info: NamedAPIResource | Pokemon;

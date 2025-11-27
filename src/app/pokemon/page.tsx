@@ -1,5 +1,5 @@
-import { PokemonInfo } from "@/components/PokemonInfo";
-import PokemonList from "@/components/PokemonList";
+import { PokemonInfo } from "@/components/pokepage/PokemonInfo";
+import PokemonList from "@/components/pokepage/PokemonList";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { pokemonOptions } from "@/queries/usePokemon";

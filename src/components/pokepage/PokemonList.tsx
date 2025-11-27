@@ -1,7 +1,7 @@
 "use client";
 
 import { useResources } from "@/queries/usePokemon";
-import { Card } from "./ui/card";
+import { Card } from "../ui/card";
 import {
   Table,
   TableBody,
@@ -9,9 +9,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "./ui/table";
+} from "../ui/table";
 import { useCallback, useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { GENERATION_QUANTITIES } from "@/constants/pokemon";
 
 export default function PokemonList() {

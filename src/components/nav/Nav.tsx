@@ -1,16 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { useEffect, useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { User } from "lucide-react";
-import { Separator } from "./ui/separator";
-import { Button } from "./ui/button";
-import Link from "next/link";
-import { ModeToggle } from "./ThemeButton";
+import { Separator } from "../ui/separator";
+import { ModeToggle } from "../theme/ThemeButton";
+import NavButton from "./NavBtn";
 // import Image from "next/image";
 
 export default function NavBar() {
   const [activePage, setActivePage] = useState("home");
+
+  useEffect(() => {
+    console.log(activePage);
+  }, [activePage]);
 
   return (
     <div className="flex grow justify-between">
@@ -37,17 +40,26 @@ export default function NavBar() {
           id="links"
           className="flex flex-row grow gap-4 px-6 items-center"
         >
-          <Button variant="ghost">
-            <Link href="/">Home</Link>
-          </Button>
+          <NavButton
+            isActive={activePage == "home"}
+            link="/"
+            title="Home"
+            onClick={() => setActivePage("home")}
+          />
           <Separator orientation="vertical" />
-          <Button variant="ghost">
-            <Link href="/about">About</Link>
-          </Button>
+          <NavButton
+            isActive={activePage == "about"}
+            link="/about"
+            title="About"
+            onClick={() => setActivePage("about")}
+          />
           <Separator orientation="vertical" />
-          <Button variant="ghost">
-            <Link href="/pokemon">Pokemon</Link>
-          </Button>
+          <NavButton
+            isActive={activePage == "pokemon"}
+            link="/pokemon"
+            title="Pokemon"
+            onClick={() => setActivePage("pokemon")}
+          />
         </div>
         <Separator className="my-2" />
       </div>

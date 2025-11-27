@@ -1,10 +1,10 @@
 "use client";
 
 import { usePokemons } from "@/queries/usePokemon";
-import PokeCard from "./PokeCard";
+import PokeCard from "../pokepage/PokeCard";
 import { JSX, useCallback, useState } from "react";
-import { Card } from "./ui/card";
-import { Input } from "./ui/input";
+import { Card } from "../ui/card";
+import { Input } from "../ui/input";
 import {
   Select,
   SelectContent,
@@ -13,9 +13,9 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
-import { Button } from "./ui/button";
-import { ButtonGroup } from "./ui/button-group";
+} from "../ui/select";
+import { Button } from "../ui/button";
+import { ButtonGroup } from "../ui/button-group";
 
 export function PokemonInfo() {
   const [limit, setLimit] = useState(50);
